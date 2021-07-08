@@ -36,8 +36,6 @@ const producto3 = crearPorducto();
 agregarProductos(producto1);
 agregarProductos(producto2);
 agregarProductos(producto3);
-
-console.log(carrito[2].precio);
 console.log(carrito);
 
 // Función para saber el total a pagar
