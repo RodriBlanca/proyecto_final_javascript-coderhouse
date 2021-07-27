@@ -1,0 +1,165 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+/* VARIABLES */
+$main: seagreen; 
+$secondary: rgb(228, 228, 228);
+$details: white;
+$letter: 'Josefin Sans', sans-serif;
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $secondary;
+    font-family: $letter;
+}
+
+@media screen and (min-width: 1024px) {
+    .header {
+        height: 100px;
+        background-color: $main;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $details;
+
+        & h1 {
+            margin-left: 50px;
+        }
+
+        & img {
+            height: 30px;
+            width: 30px;
+            margin-right: 50px;
+        }
+    }
+
+    .trolley-products {
+        display: none;
+    }
+
+    .show {
+        width: 300px;
+        height: 400px;
+        background-color: $details;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        border: 1px solid $main;
+        border-top: 0;
+        padding: 0;
+
+        &-button {
+            width: 250px;
+            height: 30px;
+            border: 0;
+            background-color: rgb(160, 13, 13);
+            margin-bottom: 20px;
+            color: white;
+        }
+    }
+
+    .products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 50px; 
+    }
+
+    .card {
+        height: 350px;
+        width: 250px;
+        background-color: $details;
+        margin: 15px 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        box-shadow: 3px 3px 6px black;
+        transition-property: box-shadow;
+        transition-duration: .5s;
+
+        &:hover {
+            box-shadow: 6px 6px 6px $main;
+        }
+
+        &-pic {
+            width: 220px;
+            height: 200px;
+            color: red;
+            overflow: hidden;
+
+            &__img {
+                max-width: 100%;
+            }
+        }
+
+        &-button {
+            height: 30px;
+            width: 150px;
+            background-color: $main;
+            border: 0;
+            color: $details;
+        }
+
+        & img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+    }
+
+    .potatoe {
+        background: url(../material/pexels-michael-burrows-7129145.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;       
+    }
+    .onion {
+        background: url(../material/pexels-michael-burrows-7129153.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;    
+    }
+    .sweet-potatoe {
+        background: url(../material/pexels-michael-burrows-7129156.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .tomatoe {
+        background: url(../material/pexels-michael-burrows-7129184.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .carrot {
+        background: url(../material/pexels-suzy-hazelwood-1306559.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .apple {
+        background: url(../material/pexels-magova-1131079.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+
+    .trolley-products__list {
+        padding: 0;
+    }
+
+    /* ESTILOS PARA LOS PRODUCTOS CREADOS CON JAVASCRIPT */
+    .product {
+        display: flex;
+        list-style: none;
+        height: 30px;
+        color: black;
+        margin: 0;
+    }
+}

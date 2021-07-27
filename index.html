@@ -6,26 +6,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
-    <link rel="stylesheet" href="../proyecto_final-javascript/estilos/main.css">
+    <link rel="stylesheet" href="./estilos/main.css">
     <title>Carrito de compras</title>
 </head>
 
-<body>
+<body class="body">
+
     <!-- HEADER -->
     <header class="header">
         <h1>Carrito de compras</h1>
-        <img src="../proyecto_final-javascript/material/trolley.png" alt="carrito">
+        <img src="./material/trolley.png" alt="trolley" id="trolley" class="trolley">
+        <div class="trolley-products">
+            <ul class="trolley-products__list">
+
+            </ul>
+            <button class="trolley-products__button">Delete All</button>
+        </div>
     </header>
 
     <!-- MAIN -->
-    <main></main>
+    <main>
+        <!-- PRODUCT CARDS -->
+        <div class="products">
+            <!-- POTATOES -->
+            <div class="card">
+                <div class="card-pic potatoe"></div>
+                <div class="card-info">
+                    <p>Potatoe</p>
+                    <p>Price: $<span>30</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- ONION -->
+            <div class="card">
+                <div class="card-pic onion"></div>
+                <div class="card-info">
+                    <p>Onion</p>
+                    <p>Price: $<span>40</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+            
+            <!-- SWEET POTATOE -->
+            <div class="card">
+                <div class="card-pic sweet-potatoe"></div>
+                <div class="card-info">
+                    <p>Sweet Potatoe</p>
+                    <p>Price: $<span>35</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- TOMATOE -->
+            <div class="card">
+                <div class="card-pic tomatoe"></div>
+                <div class="card-info">
+                    <p>Tomatoe</p>
+                    <p>Price: $<span>30</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- CARROT -->
+            <div class="card">
+                <div class="card-pic carrot"></div>
+                <div class="card-info">
+                    <p>Carrot</p>
+                    <p>Price: $<span>25</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- APPLE -->
+            <div class="card">
+                <div class="card-pic apple"></div>
+                <div class="card-info">
+                    <p>Apple</p>
+                    <p>Price: $<span>35</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+        </div>
+    </main>
 
     <!-- FOOTER -->
     <footer></footer>
 
 
     <!-- JAVASCRIPT -->
-    <script src="main.js"></script>
+
+    <!-- Archivo antiguo de javascript - será eliminado luego -->
+    <!-- <script src="main.js"></script> -->
+    <script src="./app.js"></script>
 </body>
 
 </html>
