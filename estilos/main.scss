@@ -5,6 +5,7 @@
 $main: seagreen; 
 $secondary: rgb(228, 228, 228);
 $details: white;
+$darkMode: rgb(32, 32, 32);
 $letter: 'Josefin Sans', sans-serif;
 
 body {
@@ -34,6 +35,12 @@ body {
         }
     }
 
+    .user {
+        height: 30px;
+        width: 30px;
+        margin-right: 50px;
+    }
+
     .trolley-products {
         display: none;
     }
@@ -53,14 +60,29 @@ body {
         border-top: 0;
         padding: 0;
 
-        &-button {
+        &-buttons {
             width: 250px;
             height: 30px;
-            border: 0;
-            background-color: rgb(160, 13, 13);
             margin-bottom: 20px;
-            color: white;
+            display: flex;
+            justify-content: space-between;
         }
+    }
+
+    .delete-all {
+        height: 30px;
+        width: 120px;
+        background-color: rgb(184, 23, 23);
+        border: 0;
+        color: $details;
+    }
+
+    .calculate-total {
+        height: 30px;
+        width: 120px;
+        background-color: $main;
+        border: 0;
+        color: $details;
     }
 
     .products {
@@ -161,5 +183,16 @@ body {
         height: 30px;
         color: black;
         margin: 0;
+    }
+
+    /* DARK MODE BUTTON */
+    .dark-mode__button {
+        height: 70px;
+        width: 70px;
+        background-color: $main;
+        position: absolute;
+        right: 0;
+        display: flex;
+        align-items: center;
     }
 }

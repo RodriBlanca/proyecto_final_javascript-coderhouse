@@ -12,7 +12,9 @@ class Product {
 const trolley = document.querySelector('.trolley'); 
 const cards = document.querySelectorAll('.card');
 const trolleyList = document.querySelector('.trolley-products__list');
-const deleteAllBtn = document.querySelector('.trolley-products__button');
+const deleteAllBtn = document.querySelector('.delete-all');
+const totalBtn = document.querySelector('.calculate-total');
+const body = document.querySelector('.body');
 let productsList = [];
 let product;
 
@@ -37,6 +39,11 @@ function loadEvents() {
         productsList = [];
         clearTrolley();
     });
+
+    /* TOTAL BUTTON EVENT */
+    totalBtn.addEventListener('click', () => {
+        console.log('funciona');
+    });
 }
 
 /* FUNCTIONS */
@@ -47,10 +54,10 @@ function showTrolleyList() {
     const listBtn = trolley.parentElement.children[2].children[1];
     if(showList.classList.contains('show')) {
         showList.classList.remove('show');
-        listBtn.classList.remove('show-button');
+        listBtn.classList.remove('show-buttons');
     } else {
         showList.classList.add('show');
-        listBtn.classList.add('show-button');
+        listBtn.classList.add('show-buttons');
     }
 }
 
@@ -84,4 +91,14 @@ function addToHTMLTrolley() {
 /* LIMPIA EL TROLLEY */
 function clearTrolley() {
     trolleyList.textContent = '';
+}
+
+/* DARK MODE */
+// function darkMode() {
+
+// }
+
+/* CALCULA EL TOTAL DE LA COMPRA */
+function calculateTotal() {
+    console.log(totalBtn.textContent);
 }
