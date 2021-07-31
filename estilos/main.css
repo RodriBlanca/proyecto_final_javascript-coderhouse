@@ -73,6 +73,9 @@ body {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    -webkit-box-align: initial;
+        -ms-flex-align: initial;
+            align-items: initial;
   }
   .show-user {
     height: 200px;
@@ -213,20 +216,6 @@ body {
     height: 30px;
     color: black;
     margin: 0;
-  }
-  /* DARK MODE BUTTON */
-  .dark-mode__button {
-    height: 70px;
-    width: 70px;
-    background-color: seagreen;
-    position: absolute;
-    right: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
   }
 }
 /*# sourceMappingURL=main.css.map */

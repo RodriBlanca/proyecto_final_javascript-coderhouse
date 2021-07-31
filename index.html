@@ -72,16 +72,21 @@
         </div>
         <div class="user-register">
             <!-- USER NAME -->
-            <div>
-                <label for="name">Name</label>
-                <input type="text" name="name" placeholder="Enter your name">
+            <div class="user-name">
+                <label for="name" class="user-name__label">Name</label>
+                <input type="text" class="user-name__input" name="name" placeholder="Enter your name">
+            </div>
+            <!-- USER SURNAME -->
+            <div class="user-surname">
+                <label for="surname" class="user-surname__label">Surname</label>
+                <input type="text" class="user-surname__input" name="surname" placeholder="Enter your surname">
             </div>
             <!-- USER  EMAIL-->
-            <div>
-                <label for="email">Email</label>
-                <input type="email" name="email" placeholder="Enter your email">
+            <div class="user-email">
+                <label for="email" class="user-email__label">Email</label>
+                <input type="email" class="user-email__input" name="email" placeholder="Enter your email">
             </div>
-            <button class="show-user__button">Log In</button>
+            <button class="show-user__button log-in">Log In</button>
         </div>
         <div class="trolley-products">
             <ul class="trolley-products__list">
@@ -103,7 +108,7 @@
                 <div class="card-pic potatoe"></div>
                 <div class="card-info">
                     <p>Potatoe</p>
-                    <p>Price: $<span>30</span></p>
+                    <p>Price: $<span>75</span></p>
                 </div>
                 <button class="card-button add-button" id="add-button">Add</button>
             </div>
@@ -113,7 +118,7 @@
                 <div class="card-pic onion"></div>
                 <div class="card-info">
                     <p>Onion</p>
-                    <p>Price: $<span>40</span></p>
+                    <p>Price: $<span>70</span></p>
                 </div>
                 <button class="card-button add-button" id="add-button">Add</button>
             </div>
@@ -123,7 +128,7 @@
                 <div class="card-pic sweet-potatoe"></div>
                 <div class="card-info">
                     <p>Sweet Potatoe</p>
-                    <p>Price: $<span>35</span></p>
+                    <p>Price: $<span>80</span></p>
                 </div>
                 <button class="card-button add-button" id="add-button">Add</button>
             </div>
@@ -133,7 +138,7 @@
                 <div class="card-pic tomatoe"></div>
                 <div class="card-info">
                     <p>Tomatoe</p>
-                    <p>Price: $<span>30</span></p>
+                    <p>Price: $<span>130</span></p>
                 </div>
                 <button class="card-button add-button" id="add-button">Add</button>
             </div>
@@ -143,7 +148,7 @@
                 <div class="card-pic carrot"></div>
                 <div class="card-info">
                     <p>Carrot</p>
-                    <p>Price: $<span>25</span></p>
+                    <p>Price: $<span>60</span></p>
                 </div>
                 <button class="card-button add-button" id="add-button">Add</button>
             </div>
@@ -153,14 +158,11 @@
                 <div class="card-pic apple"></div>
                 <div class="card-info">
                     <p>Apple</p>
-                    <p>Price: $<span>35</span></p>
+                    <p>Price: $<span>200</span></p>
                 </div>
                 <button class="card-button add-button" id="add-button">Add</button>
             </div>
         </div>
-
-        <!-- DARK MODE BUTTON -->
-        <div class="dark-mode__button">Dark Mode</div>
     </main>
 
     <!-- FOOTER -->

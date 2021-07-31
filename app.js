@@ -8,19 +8,36 @@ class Product {
     }
 }
 
+class User {
+    constructor(name, surname, email) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+    }
+}
+
 /* VARIABLES */
+const body = document.querySelector('.body');
+// Trolley variables
 const trolley = document.querySelector('.trolley'); 
-const user = document.querySelector('.user');
 const cards = document.querySelectorAll('.card');
 const trolleyList = document.querySelector('.trolley-products__list');
 const deleteAllBtn = document.querySelector('.delete-all');
 const totalBtn = document.querySelector('.calculate-total');
-const body = document.querySelector('.body');
-const userRegister = document.querySelector('.user-register');
 let productsList = [];
 let product;
+// User variables
+const user = document.querySelector('.user');
+const userRegister = document.querySelector('.user-register');
+const logInBtn = document.querySelector('.log-in');
+const nameInput = document.querySelector('.user-name__input');
+const surnameInput = document.querySelector('.user-surname__input');
+const emailInput = document.querySelector('.user-email__input');
+let userName;
+let userSurname;
+let userEmail;
+let newUser;
 
-console.log(userRegister);
 
 /* CARGA LOS EVENTS LISTENERS */
 loadEvents();
@@ -47,11 +64,19 @@ function loadEvents() {
 
     /* TOTAL BUTTON EVENT */
     totalBtn.addEventListener('click', () => {
-        console.log('funciona');
+        console.log('total');
     });
 
     /* USER EVENT */
     user.addEventListener('click', logInUser);
+
+    /* LOG IN EVENT */
+    logInBtn.addEventListener('click', register);
+
+    /* INPUTS VALIDATION */
+    nameInput.addEventListener('blur', nameValidation);
+    surnameInput.addEventListener('blur', surnameValidation);
+    emailInput.addEventListener('blur', emailValidation);
 }
 
 /* FUNCTIONS */
@@ -102,11 +127,6 @@ function clearTrolley() {
     trolleyList.textContent = '';
 }
 
-/* DARK MODE */
-// function darkMode() {
-
-// }
-
 /* CALCULA EL TOTAL DE LA COMPRA */
 function calculateTotal() {
     console.log(totalBtn.textContent);
@@ -119,4 +139,55 @@ function logInUser() {
     } else {
         userRegister.classList.add('show-user');
     }
+}
+
+function register() {
+    createUser();
+    localStorageUser(newUser);
+    clearInput();
+}
+
+
+function createUser() {
+    const name = nameValidation();
+    const surname = surnameValidation();
+    const email = emailValidation();
+    newUser = new User(name, surname, email);
+    return newUser;
+}
+
+function nameValidation() {
+    if(nameInput.value.length > 0) {  
+        return userName = nameInput.value;
+    } else {
+        console.log('error')
+    }
+}
+
+function surnameValidation() {
+    if(surnameInput.value.length > 0) {
+        return userSurname = surnameInput.value;   
+    } else {
+        console.log('error')
+    }
+}
+
+function emailValidation() {
+    if(emailInput.value.length > 0) {
+        return userEmail = emailInput.value;
+    } else {
+        console.log('error')
+    }
+}
+
+function clearInput() {
+    nameInput.value = '';
+    surnameInput.value = '';
+    emailInput.value = '';
+}
+
+/* ENVÍA LOS DATOS DEL USUARIO AL LOCAL STORAGE */
+function localStorageUser(user) {
+    const userToString = JSON.stringify(user)
+    localStorage.setItem('user', userToString);
 }
