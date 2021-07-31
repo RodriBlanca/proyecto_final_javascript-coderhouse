@@ -10,13 +10,17 @@ class Product {
 
 /* VARIABLES */
 const trolley = document.querySelector('.trolley'); 
+const user = document.querySelector('.user');
 const cards = document.querySelectorAll('.card');
 const trolleyList = document.querySelector('.trolley-products__list');
 const deleteAllBtn = document.querySelector('.delete-all');
 const totalBtn = document.querySelector('.calculate-total');
 const body = document.querySelector('.body');
+const userRegister = document.querySelector('.user-register');
 let productsList = [];
 let product;
+
+console.log(userRegister);
 
 /* CARGA LOS EVENTS LISTENERS */
 loadEvents();
@@ -35,6 +39,7 @@ function loadEvents() {
         })
     }
 
+    /* DELETE ALL TROLLEY BUTTON */
     deleteAllBtn.addEventListener('click', () => {
         productsList = [];
         clearTrolley();
@@ -44,14 +49,18 @@ function loadEvents() {
     totalBtn.addEventListener('click', () => {
         console.log('funciona');
     });
+
+    /* USER EVENT */
+    user.addEventListener('click', logInUser);
 }
 
 /* FUNCTIONS */
 
 /* MUESTRA Y OCULTA LA LISTA DE LOS PRODUCTOS */
 function showTrolleyList() {
-    const showList = trolley.parentElement.children[2];
-    const listBtn = trolley.parentElement.children[2].children[1];
+    const showList = trolley.parentElement.parentElement.children[3];
+    const listBtn = trolley.parentElement.parentElement.children[3].children[1];
+    
     if(showList.classList.contains('show')) {
         showList.classList.remove('show');
         listBtn.classList.remove('show-buttons');
@@ -101,4 +110,13 @@ function clearTrolley() {
 /* CALCULA EL TOTAL DE LA COMPRA */
 function calculateTotal() {
     console.log(totalBtn.textContent);
+}
+
+/* USER LOG IN */
+function logInUser() {
+    if(userRegister.classList.contains('show-user')) {
+        userRegister.classList.remove('show-user');
+    } else {
+        userRegister.classList.add('show-user');
+    }
 }

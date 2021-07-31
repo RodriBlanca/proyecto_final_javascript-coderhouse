@@ -26,20 +26,19 @@ body {
   .header h1 {
     margin-left: 50px;
   }
-  .header img {
+  .user,
+  .trolley {
     height: 30px;
     width: 30px;
     margin-right: 50px;
+    fill: white;
   }
-  .user {
-    height: 30px;
-    width: 30px;
-    margin-right: 50px;
-  }
-  .trolley-products {
+  .trolley-products,
+  .user-register {
     display: none;
   }
-  .show {
+  .show,
+  .show-user {
     width: 300px;
     height: 400px;
     background-color: white;
@@ -63,7 +62,8 @@ body {
     border-top: 0;
     padding: 0;
   }
-  .show-buttons {
+  .show-buttons,
+  .show-user-buttons {
     width: 250px;
     height: 30px;
     margin-bottom: 20px;
@@ -73,6 +73,19 @@ body {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+  }
+  .show-user {
+    height: 200px;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    color: black;
+  }
+  .show-user__button {
+    height: 30px;
+    width: 150px;
+    background-color: seagreen;
+    border: 0;
+    color: white;
   }
   .delete-all {
     height: 30px;
