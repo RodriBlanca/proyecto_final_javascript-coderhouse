@@ -14,7 +14,7 @@
 
     <!-- HEADER -->
     <header class="header">
-        <h1>Carrito de compras</h1>
+        <h1>Mini Market</h1>
 
         <div class="users-options">
             <!-- USER -->
@@ -89,6 +89,11 @@
             <button class="show-user__button log-in">Log In</button>
         </div>
         <div class="trolley-products">
+            <div class="trolley-data">
+                <p class="trolley-data__product">Producto</p>
+                <p class="trolley-data__price">Cantidad</p>
+                <p class="trolley-data__amount">Precio</p>
+            </div>
             <ul class="trolley-products__list">
 
             </ul>
@@ -100,7 +105,8 @@
     </header>
 
     <!-- MAIN -->
-    <main>
+    <main class="main">
+        <h2 class="main-title">Nuestros Productos</h2>
         <!-- PRODUCT CARDS -->
         <div class="products">
             <!-- POTATOES -->
@@ -137,7 +143,7 @@
             <div class="card">
                 <div class="card-pic tomatoe"></div>
                 <div class="card-info">
-                    <p>Tomatoe</p>
+                    <p>Tomato</p>
                     <p>Price: $<span>130</span></p>
                 </div>
                 <button class="card-button add-button" id="add-button">Add</button>
@@ -163,10 +169,13 @@
                 <button class="card-button add-button" id="add-button">Add</button>
             </div>
         </div>
+        <div class="message"></div>
     </main>
 
     <!-- FOOTER -->
-    <footer></footer>
+    <footer class="footer">
+        <h3>Mini Market</h3>
+    </footer>
 
 
     <!-- JAVASCRIPT -->

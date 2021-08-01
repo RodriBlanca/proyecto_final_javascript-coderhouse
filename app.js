@@ -33,6 +33,8 @@ const logInBtn = document.querySelector('.log-in');
 const nameInput = document.querySelector('.user-name__input');
 const surnameInput = document.querySelector('.user-surname__input');
 const emailInput = document.querySelector('.user-email__input');
+const message = document.querySelector('.message');
+const messageBtn = document.querySelector('.')
 let userName;
 let userSurname;
 let userEmail;
@@ -145,6 +147,7 @@ function register() {
     createUser();
     localStorageUser(newUser);
     clearInput();
+    createMessage();
 }
 
 
@@ -190,4 +193,24 @@ function clearInput() {
 function localStorageUser(user) {
     const userToString = JSON.stringify(user)
     localStorage.setItem('user', userToString);
+}
+
+/* TOMA DATOS DEL LOCALSTORAGE Y DEVUELVE UN SALUDO AL USUARIO */
+function createMessage() {
+    const localUser = localStorage.getItem('user');
+    const userJSON = JSON.parse(localUser);
+    const userMessage = document.createElement('div');
+    userMessage.innerHTML = `
+        <button>X</button>
+        <p>Bienvenido/a ${userJSON.name} ${userJSON.surname}, muchas gracias por registrarte!</p>
+    `;   
+    message.classList.add('user-message');
+    message.appendChild(userMessage);
+    console.log(message)
+    return message;
+}
+
+/* CIERRA EL MENSAJE */
+function closeMessage() {
+
 }

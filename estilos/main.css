@@ -37,6 +37,23 @@ body {
   .user-register {
     display: none;
   }
+  .trolley-data {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: black;
+  }
+  .trolley-data__product, .trolley-data__price, .trolley-data__amount {
+    margin: 15px 20px;
+  }
+  .trolley-buttons {
+    margin-bottom: 15px;
+  }
   .show,
   .show-user {
     width: 300px;
@@ -52,9 +69,9 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -104,6 +121,24 @@ body {
     border: 0;
     color: white;
   }
+  .main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .main-title {
+    margin-top: 50px;
+  }
   .products {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -113,7 +148,6 @@ body {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin-top: 50px;
   }
   .card {
     height: 350px;
@@ -206,6 +240,20 @@ body {
   }
   .trolley-products__list {
     padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    min-height: 17.125rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
   }
   /* ESTILOS PARA LOS PRODUCTOS CREADOS CON JAVASCRIPT */
   .product {
@@ -216,6 +264,34 @@ body {
     height: 30px;
     color: black;
     margin: 0;
+  }
+  .message {
+    display: none;
+  }
+  /* MENSAJE PARA CUANDO EL USUARIO SE REGISTRA */
+  .user-message {
+    display: block;
+    border: 1px solid seagreen;
+    color: black;
+    background-color: white;
+    position: absolute;
+    top: 200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    height: 100px;
+    width: 300px;
+  }
+  .user-message button {
+    background-color: #b81717;
+    border: 0;
+    color: white;
   }
 }
 /*# sourceMappingURL=main.css.map */

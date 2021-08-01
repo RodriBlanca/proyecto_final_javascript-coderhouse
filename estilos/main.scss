@@ -42,6 +42,23 @@ body {
         display: none;
     }
 
+    .trolley-data {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: black;
+
+        &__product,
+        &__price,
+        &__amount {
+            margin: 15px 20px;
+        }
+    }
+
+    .trolley-buttons {
+        margin-bottom: 15px;
+    }
+
     .show,
     .show-user {
         width: 300px;
@@ -52,7 +69,7 @@ body {
         right: 0;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         border: 1px solid $main;
         border-top: 0;
@@ -98,11 +115,21 @@ body {
         color: $details;
     }
 
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &-title {
+            margin-top: 50px;
+        }
+    }
+
     .products {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 50px; 
+        justify-content: center; 
     }
 
     .card {
@@ -187,6 +214,12 @@ body {
 
     .trolley-products__list {
         padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-height: 17.125rem;
+        box-sizing: border-box;
+        margin: 0;
     }
 
     /* ESTILOS PARA LOS PRODUCTOS CREADOS CON JAVASCRIPT */
@@ -196,5 +229,30 @@ body {
         height: 30px;
         color: black;
         margin: 0;
+    }
+
+    .message {
+        display: none;
+    }
+
+    /* MENSAJE PARA CUANDO EL USUARIO SE REGISTRA */
+    .user-message {
+        display: block;
+        border: 1px solid $main;
+        color: black;
+        background-color: $details;
+        position: absolute;
+        top: 200px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 100px;
+        width: 300px;
+
+        & button {
+            background-color: rgb(184, 23, 23);
+            border: 0;
+            color: $details;
+        }
     }
 }
