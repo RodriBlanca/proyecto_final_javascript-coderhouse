@@ -34,12 +34,13 @@ const nameInput = document.querySelector('.user-name__input');
 const surnameInput = document.querySelector('.user-surname__input');
 const emailInput = document.querySelector('.user-email__input');
 const message = document.querySelector('.message');
-const messageBtn = document.querySelector('.')
+const messageBtn = document.querySelector('.message-button');
 let userName;
 let userSurname;
 let userEmail;
 let newUser;
 
+console.log(messageBtn);
 
 /* CARGA LOS EVENTS LISTENERS */
 loadEvents();
@@ -79,6 +80,10 @@ function loadEvents() {
     nameInput.addEventListener('blur', nameValidation);
     surnameInput.addEventListener('blur', surnameValidation);
     emailInput.addEventListener('blur', emailValidation);
+
+    /* MESSAGE BUTTON */
+    messageBtn.addEventListener('click', closeMessage);
+
 }
 
 /* FUNCTIONS */
@@ -201,16 +206,17 @@ function createMessage() {
     const userJSON = JSON.parse(localUser);
     const userMessage = document.createElement('div');
     userMessage.innerHTML = `
-        <button>X</button>
+        <button class="message-button">X</button>
         <p>Bienvenido/a ${userJSON.name} ${userJSON.surname}, muchas gracias por registrarte!</p>
     `;   
     message.classList.add('user-message');
     message.appendChild(userMessage);
-    console.log(message)
     return message;
 }
 
 /* CIERRA EL MENSAJE */
 function closeMessage() {
-
+    // message.classList.remove('user-message');
+    // message.removeChild;
+    console.log('Funciona');
 }
