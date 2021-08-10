@@ -1,6 +1,7 @@
 /* GOOGLE FONTS */
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 /* VARIABLES */
+/* DARK MODE VARIABLES */
 body {
   margin: 0;
   padding: 0;
@@ -291,6 +292,60 @@ body {
   .user-message button {
     background-color: #b81717;
     border: 0;
+    color: white;
+  }
+  .footer {
+    height: 100px;
+    background-color: seagreen;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .footer-title {
+    color: white;
+    margin-left: 25px;
+  }
+  /* DARK MODE */
+  .dark-mode {
+    margin-right: 25px;
+    height: 30px;
+    width: 100px;
+    background-color: #202020;
+    color: white;
+    border: 0;
+  }
+  .dark-body {
+    background-color: black;
+  }
+  .dark-header {
+    background-color: #202020;
+  }
+  .dark-main {
+    color: white;
+  }
+  .dark-footer, .dark-card {
+    background-color: #202020;
+    color: white;
+  }
+  .dark-user__register {
+    background-color: #202020;
+    border: 1px solid black;
+    color: white;
+  }
+  .dark-trolley__products {
+    background-color: #202020;
+    border: 1px solid black;
+  }
+  .dark-trolley__data {
+    color: white;
+  }
+  .dark-product {
     color: white;
   }
 }

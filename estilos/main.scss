@@ -7,6 +7,9 @@ $secondary: rgb(228, 228, 228);
 $details: white;
 $darkMode: rgb(32, 32, 32);
 $letter: 'Josefin Sans', sans-serif;
+/* DARK MODE VARIABLES */
+$dark-main: rgb(32, 32, 32);
+$dark-secondary: rgb(0, 0, 0);
 
 body {
     margin: 0;
@@ -252,6 +255,70 @@ body {
         & button {
             background-color: rgb(184, 23, 23);
             border: 0;
+            color: $details;
+        }
+    }
+
+    .footer {
+        height: 100px;
+        background-color: $main;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-title {
+            color: $details;
+            margin-left: 25px;
+        }
+    }
+
+    /* DARK MODE */
+    .dark {
+        &-mode {
+            margin-right: 25px;
+            height: 30px;
+            width: 100px;
+            background-color: $dark-main;
+            color: $details;
+            border: 0;
+        }
+
+        &-body {
+            background-color: $dark-secondary;
+        }
+        
+        &-header {
+            background-color: $dark-main;
+        }
+
+        &-main {
+            color: $details;
+        }
+
+        &-footer,
+        &-card {
+            background-color: $dark-main;
+            color: $details;
+        }
+
+        &-user__register {
+            background-color: $dark-main;
+            border: 1px solid $dark-secondary;
+            color: $details;
+        }
+
+        &-trolley {
+            &__products {
+                background-color: $dark-main;
+                border: 1px solid $dark-secondary;
+            }
+            
+            &__data {
+                color: $details;
+            }
+        }
+
+        &-product {
             color: $details;
         }
     }

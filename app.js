@@ -40,7 +40,7 @@ let userSurname;
 let userEmail;
 let newUser;
 
-console.log(messageBtn);
+// console.log(messageBtn);
 
 /* CARGA LOS EVENTS LISTENERS */
 loadEvents();
@@ -52,9 +52,9 @@ function loadEvents() {
         cards[i].addEventListener('click', (e) => {
             if(e.target.classList.contains('add-button')) {
                 clearTrolley();
-                createProduct(i);
-                addProductTrolley(product);         
-                addToHTMLTrolley(product);
+                const newProduct = createProduct(i);   
+                addProductTrolley(newProduct);         
+                addToHTMLTrolley();
             }
         })
     }
@@ -82,7 +82,7 @@ function loadEvents() {
     emailInput.addEventListener('blur', emailValidation);
 
     /* MESSAGE BUTTON */
-    messageBtn.addEventListener('click', closeMessage);
+    // messageBtn.addEventListener('click', closeMessage);
 
 }
 
@@ -107,25 +107,39 @@ function createProduct(i) {
     const img = cards[i].children[0];
     const name = cards[i].children[1].children[0].textContent;
     const price = cards[i].children[1].children[1].children[0].textContent;
-    product = new Product(img, name, price);
-    return product;
+    return new Product(img, name, price);
 }
 
 /* AGREGA UN PRODUCTO AL ARRAY "productList" */
-function addProductTrolley() {
+function addProductTrolley(product) {
     productsList = [...productsList, product];
 }
 
 /* MUESTRA LOS PRODUCTOS EN EL HTML */
 function addToHTMLTrolley() {
     productsList.forEach(product => {
-        const li = document.createElement('li');
-        li.classList.add('product');
-        li.innerHTML = `
-            <p>${product.name}</p>
-            <p>$${product.price}</p>
-        `;
-        trolleyList.appendChild(li);
+        if(body.classList.contains('dark-body')) {
+            const li = document.createElement('li');
+            li.classList.add('product');
+            const liName = document.createElement('p');
+            const liPrice = document.createElement('p');
+            liName.textContent = `${product.name}`;
+            liPrice.textContent = `$${product.price}`;
+            li.style.color = 'white';
+            li.appendChild(liName);
+            li.appendChild(liPrice);
+            trolleyList.appendChild(li);
+        } else {
+            const li = document.createElement('li');
+            li.classList.add('product');
+            const liName = document.createElement('p');
+            const liPrice = document.createElement('p');
+            liName.textContent = `${product.name}`;
+            liPrice.textContent = `$${product.price}`;
+            li.appendChild(liName);
+            li.appendChild(liPrice);
+            trolleyList.appendChild(li);
+        }
     })
 }
 
@@ -220,3 +234,36 @@ function closeMessage() {
     // message.removeChild;
     console.log('Funciona');
 }
+
+
+/* UTILIZACIÓN DE JQUERY */
+/* DARK MODE */
+$( document ).ready(function(){
+    $('.dark-mode').click(function(e) {
+        e.preventDefault();
+
+        if($('.body').hasClass('dark-body')) {
+            $('.body').removeClass('dark-body');
+            $('.header').removeClass('dark-header');
+            $('.main').removeClass('dark-main');
+            $('.footer').removeClass('dark-footer');
+            $('.card').removeClass('dark-card');
+            $('.trolley-products').removeClass('dark-trolley__products');
+            $('.trolley-data').removeClass('dark-trolley__data');
+            $('.user-register').removeClass('dark-user__register');
+            $('.product').removeClass('dark-product');
+            $('.dark-mode').css('background-color', 'rgb(32, 32, 32)');
+        } else {
+            $('.body').addClass('dark-body');
+            $('.header').addClass('dark-header');
+            $('.main').addClass('dark-main');
+            $('.footer').addClass('dark-footer');
+            $('.card').addClass('dark-card');
+            $('.trolley-products').addClass('dark-trolley__products');
+            $('.trolley-data').addClass('dark-trolley__data');
+            $('.user-register').addClass('dark-user__register');
+            $('.dark-mode').css('background-color', 'seagreen');
+
+        }
+    })
+})
