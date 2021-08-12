@@ -42,8 +42,9 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -53,7 +54,13 @@ body {
     margin: 15px 20px;
   }
   .trolley-buttons {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
+  }
+  .trolley-total p {
+    margin: 0 0 5px 0;
+    padding: 5px;
+    border: 1px solid seagreen;
+    color: seagreen;
   }
   .show,
   .show-user {
@@ -84,7 +91,6 @@ body {
   .show-user-buttons {
     width: 250px;
     height: 30px;
-    margin-bottom: 20px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -104,7 +110,7 @@ body {
   .show-user__button {
     height: 30px;
     width: 150px;
-    background-color: seagreen;
+    background-color: #b81717;
     border: 0;
     color: white;
   }
@@ -239,6 +245,66 @@ body {
     background-repeat: no-repeat;
     background-position-y: center;
   }
+  .pineapple {
+    background: url(../material/pineapple.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+  .pear {
+    background: url(../material/pear.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+  .peach {
+    background: url(../material/peach.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+  .banana {
+    background: url(../material/banana.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+  .strawberry {
+    background: url(../material/strawberry.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+  .watermelon {
+    background: url(../material/watermelon.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+  .avocado {
+    background: url(../material/avocado.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+  .green-pepper {
+    background: url(../material/green-pepper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+  .red-pepper {
+    background: url(../material/red-pepper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+  .corn {
+    background: url(../material/corn.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
   .trolley-products__list {
     padding: 0;
     display: -webkit-box;
@@ -261,10 +327,16 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     list-style: none;
     height: 30px;
     color: black;
     margin: 0;
+  }
+  .product td {
+    margin: 15px 20px;
   }
   .message {
     display: none;
@@ -293,6 +365,18 @@ body {
     background-color: #b81717;
     border: 0;
     color: white;
+  }
+  .errorAlert {
+    border: 1px solid #b81717;
+    color: #b81717;
+    padding: 5px;
+    margin: 0;
+  }
+  .errorInput {
+    border-color: #b81717;
+  }
+  .validate {
+    border-color: seagreen;
   }
   .footer {
     height: 100px;

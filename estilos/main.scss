@@ -47,7 +47,7 @@ body {
 
     .trolley-data {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         color: black;
 
@@ -59,7 +59,14 @@ body {
     }
 
     .trolley-buttons {
-        margin-bottom: 15px;
+        margin-bottom: 5px;
+    }
+
+    .trolley-total p {
+        margin: 0 0 5px 0;
+        padding: 5px;
+        border: 1px solid seagreen;
+        color: seagreen;
     }
 
     .show,
@@ -81,7 +88,6 @@ body {
         &-buttons {
             width: 250px;
             height: 30px;
-            margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items:initial;
@@ -96,7 +102,7 @@ body {
         &__button {
             height: 30px;
             width: 150px;
-            background-color: $main;
+            background-color: rgb(184, 23, 23);
             border: 0;
             color: $details;
         }
@@ -214,6 +220,66 @@ body {
         background-repeat: no-repeat;
         background-position-y: center;
     }
+    .pineapple {
+        background: url(../material/pineapple.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .pear {
+        background: url(../material/pear.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .peach {
+        background: url(../material/peach.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .banana {
+        background: url(../material/banana.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .strawberry {
+        background: url(../material/strawberry.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .watermelon {
+        background: url(../material/watermelon.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .avocado {
+        background: url(../material/avocado.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .green-pepper {
+        background: url(../material/green-pepper.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .red-pepper {
+        background: url(../material/red-pepper.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .corn {
+        background: url(../material/corn.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
 
     .trolley-products__list {
         padding: 0;
@@ -228,10 +294,15 @@ body {
     /* ESTILOS PARA LOS PRODUCTOS CREADOS CON JAVASCRIPT */
     .product {
         display: flex;
+        justify-content: space-between;
         list-style: none;
         height: 30px;
         color: black;
         margin: 0;
+
+        & td {
+            margin: 15px 20px;
+        }
     }
 
     .message {
@@ -257,6 +328,21 @@ body {
             border: 0;
             color: $details;
         }
+    }
+
+    .errorAlert {
+        border: 1px solid rgb(184, 23, 23);
+        color: rgb(184, 23, 23);
+        padding: 5px;
+        margin: 0;
+    }
+
+    .errorInput {
+        border-color: rgb(184, 23, 23);
+    }
+
+    .validate {
+        border-color: seagreen;
     }
 
     .footer {

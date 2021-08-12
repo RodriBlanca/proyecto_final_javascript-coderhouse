@@ -88,22 +88,27 @@
                 <label for="email" class="user-email__label">Email</label>
                 <input type="email" class="user-email__input" name="email" placeholder="Enter your email">
             </div>
-            <button class="show-user__button log-in">Log In</button>
+            <button class="show-user__button log-in" disabled>Log In</button>
         </div>
 
         <!-- TROLLEY CONTAINER -->
         <div class="trolley-products">
-            <div class="trolley-data">
-                <p class="trolley-data__product">Producto</p>
-                <p class="trolley-data__price">Cantidad</p>
-                <p class="trolley-data__amount">Precio</p>
-            </div>
-            <ul class="trolley-products__list">
-
-            </ul>
+            <table>
+                <thead>
+                    <tr class="trolley-data">
+                        <th class="trolley-data__product">Producto</th>
+                        <th class="trolley-data__amount">Cantidad</th>
+                        <th class="trolley-data__price">Precio</th>
+                    </tr>
+                </thead>
+                <tbody class="trolley-products__list"></tbody>
+            </table>
             <div class="trolley-buttons">
                 <button class="trolley-buttons__button delete-all">Delete All</button>
                 <button class="trolley-buttons__button calculate-total">Total</button>
+            </div>
+            <div class="trolley-total">
+
             </div>
         </div>
     </header>
@@ -172,6 +177,106 @@
                 </div>
                 <button class="card-button add-button" id="add-button">Add</button>
             </div>
+
+            <!-- PEAR -->
+            <div class="card">
+                <div class="card-pic pear"></div>
+                <div class="card-info">
+                    <p>Pear</p>
+                    <p>Price: $<span>150</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- STRAWBERRY -->
+            <div class="card">
+                <div class="card-pic strawberry"></div>
+                <div class="card-info">
+                    <p>Strawberry</p>
+                    <p>Price: $<span>400</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- PINEAPPLE -->
+            <div class="card">
+                <div class="card-pic pineapple"></div>
+                <div class="card-info">
+                    <p>Pineapple</p>
+                    <p>Price: $<span>200</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- BANANA -->
+            <div class="card">
+                <div class="card-pic banana"></div>
+                <div class="card-info">
+                    <p>Banana</p>
+                    <p>Price: $<span>150</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- PEACH -->
+            <div class="card">
+                <div class="card-pic peach"></div>
+                <div class="card-info">
+                    <p>Peach</p>
+                    <p>Price: $<span>300</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- WATERMELON -->
+            <div class="card">
+                <div class="card-pic watermelon"></div>
+                <div class="card-info">
+                    <p>Watermelon</p>
+                    <p>Price: $<span>70</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- AVOCADO -->
+            <div class="card">
+                <div class="card-pic avocado"></div>
+                <div class="card-info">
+                    <p>Avocado</p>
+                    <p>Price: $<span>70</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- GREEN PEPPER -->
+            <div class="card">
+                <div class="card-pic green-pepper"></div>
+                <div class="card-info">
+                    <p>Green Pepper</p>
+                    <p>Price: $<span>180</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- RED PEPPER -->
+            <div class="card">
+                <div class="card-pic red-pepper"></div>
+                <div class="card-info">
+                    <p>Red Pepper</p>
+                    <p>Price: $<span>200</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
+
+            <!-- CORN -->
+            <div class="card">
+                <div class="card-pic corn"></div>
+                <div class="card-info">
+                    <p>Corn</p>
+                    <p>Price: $<span>100</span></p>
+                </div>
+                <button class="card-button add-button" id="add-button">Add</button>
+            </div>
         </div>
         <div class="message"></div>
     </main>
@@ -179,7 +284,7 @@
     <!-- FOOTER -->
     <footer class="footer">
         <h3 class="footer-title">Mini Market</h3>
-        <button class="dark-mode">Dark Mode</button>
+        <button class="dark-mode light">Dark Mode</button>
     </footer>
 
 
