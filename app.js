@@ -1,9 +1,10 @@
 /* CLASES */
 class Product {
-    constructor(img, name, price) {
+    constructor(img, name, price, id) {
         this.img = img;
         this.name = name;
         this.price = price;
+        this.id = id;
         this.amount = 1;
     }
 }
@@ -48,7 +49,6 @@ const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0
 loadEvents();
 
 function loadEvents() {
-    trolley.addEventListener('click', showTrolleyList)
 
     for(let i = 0; i < cards.length; i++) {
         cards[i].addEventListener('click', (e) => {
@@ -67,19 +67,22 @@ function loadEvents() {
         clearTrolley();
     });
 
+    /* DELETE PRODUCT */
+    trolleyProducts.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(e.target.classList.contains('product-button')) {
+            const productId = e.target.getAttribute('data-id');
+
+            productsList = productsList.filter(producto => producto.id != productId)
+            addToHTMLTrolley();
+        }
+    })
+
     /* TOTAL BUTTON EVENT */
     totalBtn.addEventListener('click', calculateTotal);
 
-    /* USER EVENT */
-    user.addEventListener('click', logInUser);
-
     /* LOG IN EVENT */
     logInBtn.addEventListener('click', register);
-
-    /* DELETE MESSAGE */
-    // messageBtn.addEventListener('click', () => {
-    //     console.log('funciona');
-    // })
 
     /* INPUTS VALIDATION */
     nameInput.addEventListener('blur', nameValidation);
@@ -98,26 +101,13 @@ function loadEvents() {
 
 /* FUNCTIONS */
 
-/* MUESTRA Y OCULTA LA LISTA DE LOS PRODUCTOS */
-function showTrolleyList() {
-    const showList = trolley.parentElement.parentElement.children[3];
-    const listBtn = trolley.parentElement.parentElement.children[3].children[1];
-    
-    if(showList.classList.contains('show')) {
-        showList.classList.remove('show');
-        listBtn.classList.remove('show-buttons');
-    } else {
-        showList.classList.add('show');
-        listBtn.classList.add('show-buttons');
-    }
-}
-
 /* CREA UN NUEVO PRODUCTO CON LOS VALORES DE LAS CARDS */
 function createProduct(i) {
     const img = cards[i].children[0];
     const name = cards[i].children[1].children[0].textContent;
     const price = cards[i].children[1].children[1].children[0].textContent;
-    return new Product(img, name, price);
+    const id = cards[i].querySelector('a').getAttribute('data-id');
+    return new Product(img, name, price, id);
 }
 
 /* AGREGA UN PRODUCTO AL ARRAY "productList" */
@@ -127,34 +117,46 @@ function addProductTrolley(product) {
 
 /* MUESTRA LOS PRODUCTOS EN EL HTML */
 function addToHTMLTrolley() {
+    clearTrolley();
     productsList.forEach(product => {
         if(body.classList.contains('dark-body')) {
-            const li = document.createElement('li');
+            const tr = document.createElement('tr');
             li.classList.add('product');
-            const liName = document.createElement('p');
-            const liPrice = document.createElement('p');
-            const liAmount = document.createElement('p');
-            liName.textContent = `${product.name}`;
-            liAmount.textContent = `${product.amount}`;
-            liPrice.textContent = `$${product.price}`;
-            li.style.color = 'white';
-            li.appendChild(liName);
-            li.appendChild(liAmount);
-            li.appendChild(liPrice);
-            trolleyList.appendChild(li);
+            const trName = document.createElement('td');
+            const trPrice = document.createElement('td');
+            const trAmount = document.createElement('td');
+            const trButton = document.createElement('td');
+            trButton.innerHTML = `
+                <a href="#" class="product-button">X</a>
+            `;
+            trName.textContent = `${product.name}`;
+            trAmount.textContent = `${product.amount}`;
+            trPrice.textContent = `$${product.price}`;
+            tr.style.color = 'white';
+            tr.appendChild(trName);
+            tr.appendChild(trAmount);
+            tr.appendChild(trPrice);
+            tr.appendChild(trButton);
+            trolleyList.appendChild(tr);
         } else {
-            const li = document.createElement('tr');
-            li.classList.add('product');
-            const liName = document.createElement('td');
-            const liPrice = document.createElement('td');
-            const liAmount = document.createElement('td');
-            liName.textContent = `${product.name}`;
-            liAmount.textContent = `${product.amount}`;
-            liPrice.textContent = `$${product.price}`;
-            li.appendChild(liName);
-            li.appendChild(liAmount);
-            li.appendChild(liPrice);
-            trolleyList.appendChild(li);
+            const tr = document.createElement('tr');
+            tr.classList.add('product');
+            const trName = document.createElement('td');
+            const trPrice = document.createElement('td');
+            trPrice.setAttribute('align', 'left');
+            const trAmount = document.createElement('td');
+            const trButton = document.createElement('td');
+            trButton.innerHTML = `
+                <a href="#" class="product-button" data-id="${product.id}">X</a>
+            `;
+            trName.textContent = `${product.name}`;
+            trAmount.textContent = `${product.amount}`;
+            trPrice.textContent = `$${product.price}`;
+            tr.appendChild(trName);
+            tr.appendChild(trAmount);
+            tr.appendChild(trPrice);
+            tr.appendChild(trButton);
+            trolleyList.appendChild(tr);
         }
     })
 }
@@ -180,6 +182,14 @@ function calculateTotal() {
         console.log(sum);
     })
     sumToHTML(sum);
+    setTimeout(function() {
+        productsList = [];
+        clearTrolley();
+    }, 2500);
+    setTimeout(function() {
+        totalList = [];
+        trolleyTotal.textContent = '';
+    }, 3000);
 }
 
 /* MUESTRA EL TOTAL EN EL HTML */
@@ -191,15 +201,8 @@ function sumToHTML(total) {
 }
 
 /* USER LOG IN */
-function logInUser() {
-    if(userRegister.classList.contains('show-user')) {
-        userRegister.classList.remove('show-user');
-    } else {
-        userRegister.classList.add('show-user');
-    }
-}
-
-function register() {
+function register(e) {
+    e.preventDefault()
     createUser();
     localStorageUser(newUser);
     clearInput();
@@ -342,7 +345,12 @@ function closeMessage() {
 /* DARK MODE */
 $( document ).ready(function(){
 
-    light();
+    /* Dependiendo si se almacenó un valor en el localStorage, ejecuta ese o el light por default */
+    if(localStorage.getItem('mode') == 'dark') {
+        dark();
+    } else {
+        light();
+    }
 
     const theme = () => {
         if(localStorage.getItem('mode') == 'dark') {
@@ -387,3 +395,29 @@ $( document ).ready(function(){
 
     $('.dark-mode').click(theme);
 })
+
+const usersURL = 'https://jsonplaceholder.typicode.com/users';
+
+const userDatos = {name: 'Roberto', surname: 'Juarez', email: 'rbjuarez@gmail.com'};
+
+$('.log-in').click((e) => {
+    e.preventDefault();
+        $.post(usersURL, userDatos, (respuesta, estado) => {
+            if(estado === "success") {
+                // respuesta.forEach(e => {
+                // //     $('body').prepend(`<div>
+                // //     Guardado:${e.name};
+                // // </div>`)
+            
+                // })
+                console.log(respuesta);
+            }
+        })
+        // console.log('funciona');
+        // console.log(usersURL)
+        $.get(usersURL, (respuesta, estado) => {
+            respuesta.forEach(e => {
+                console.log(e.name);
+            })
+        })
+    })
