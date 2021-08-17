@@ -38,6 +38,7 @@ const surnameInput = document.querySelector('.user-surname__input');
 const emailInput = document.querySelector('.user-email__input');
 const message = document.querySelector('.message');
 const messageBtn = document.querySelector('.message-button');
+const usersURL = 'https://jsonplaceholder.typicode.com/users';
 let userName;
 let userSurname;
 let userEmail;
@@ -95,7 +96,13 @@ function loadEvents() {
     emailInput.addEventListener('blur', enableBtn);
 
     /* MESSAGE BUTTON */
-    // messageBtn.addEventListener('click', closeMessage);
+    message.addEventListener('click', (e) => {
+        // Elimina el mensaje que aparece al registrarse
+        if(e.target.classList.contains('user-message__button')) {
+            message.removeChild(message.firstChild);
+            message.classList.remove('user-message');
+        }
+    });
 
 }
 
@@ -171,15 +178,12 @@ function calculateTotal() {
     totalList = [];
     console.log(productsList);
     productsList.forEach(product => {
-        console.log(parseInt(product.price));
         totalList = [...totalList, parseInt(product.price)];
         sum = 0;
         totalList.forEach(precios => {
             sum += precios;
             return sum;
         })
-        console.log(totalList);
-        console.log(sum);
     })
     sumToHTML(sum);
     setTimeout(function() {
@@ -189,7 +193,7 @@ function calculateTotal() {
     setTimeout(function() {
         totalList = [];
         trolleyTotal.textContent = '';
-    }, 3000);
+    }, 5000);
 }
 
 /* MUESTRA EL TOTAL EN EL HTML */
@@ -207,8 +211,27 @@ function register(e) {
     localStorageUser(newUser);
     clearInput();
     createMessage();
+    nameInput.classList.remove('validate');
+    surnameInput.classList.remove('validate');
+    emailInput.classList.remove('validate');
+    logInBtn.setAttribute('disabled', true);
+    logInBtn.style.backgroundColor = 'rgb(184, 23, 23)';
+
+    $.post(usersURL, newUser, (respuesta, estado) => {
+        if(estado === "success") {
+            // Muestra un mensaje de registro exitoso con algunos de los datos que se envían
+            $('.user-register').append(`<p class="successful-registration">El usuario ${respuesta.name} ${respuesta.surname} se registró exitosamente</p>`)
+            $('.successful-registration').css('background-color', 'seagreen');
+            setTimeout(function(){
+                // Elimina el mensaje después de 3 segundos
+                $('.successful-registration').remove();
+                console.log('funciona');
+            }, 3000)
+        }
+    })
 }
 
+// Crea un usuario con los datos de los inputs
 function createUser() {
     const name = nameValidation();
     const surname = surnameValidation();
@@ -217,6 +240,7 @@ function createUser() {
     return newUser;
 }
 
+// Valida los datos del input "name"
 function nameValidation() {
     if(nameInput.value.length > 0) {
         
@@ -237,6 +261,7 @@ function nameValidation() {
     }
 }
 
+// Valida los datos del input "surname"
 function surnameValidation() {
     if(surnameInput.value.length > 0) {
         
@@ -257,6 +282,7 @@ function surnameValidation() {
     }
 }
 
+// Valida los datos del input "email"
 function emailValidation() {
     if(emailInput.value.length > 0) {    
         // Elimina los errores de validación
@@ -267,15 +293,12 @@ function emailValidation() {
 
         // Validación del email
         if(re.test(emailInput.value)) {
-            console.log('El email es válido');
             emailInput.classList.remove('errorInput');
             emailInput.classList.add('validate');
             return emailInput.value;
         } else {
             errorMessage('El email no es válido');
         }
-
-        console.log(emailInput.classList);
 
     } else {
         emailInput.classList.remove('validate');
@@ -298,8 +321,6 @@ function errorMessage(message) {
     errorAlert.classList.add('errorAlert');
     errorAlert.textContent = message;
     const errores = document.querySelectorAll('.errorInput');
-
-    console.log(errores.length)
     
     if(errores.length === 1) {
         userRegister.insertBefore(errorAlert, logInBtn);
@@ -325,21 +346,13 @@ function createMessage() {
     const userJSON = JSON.parse(localUser);
     const userMessage = document.createElement('div');
     userMessage.innerHTML = `
-        <button class="message-button">X</button>
+        <a href="#" class="user-message__button">X</a>
         <p>Bienvenido/a ${userJSON.name} ${userJSON.surname}, muchas gracias por registrarte!</p>
     `;   
     message.classList.add('user-message');
     message.appendChild(userMessage);
     return message;
 }
-
-/* CIERRA EL MENSAJE */
-function closeMessage() {
-    // message.classList.remove('user-message');
-    // message.removeChild;
-    console.log('Funciona');
-}
-
 
 /* UTILIZACIÓN DE JQUERY */
 /* DARK MODE */
@@ -396,28 +409,3 @@ $( document ).ready(function(){
     $('.dark-mode').click(theme);
 })
 
-const usersURL = 'https://jsonplaceholder.typicode.com/users';
-
-const userDatos = {name: 'Roberto', surname: 'Juarez', email: 'rbjuarez@gmail.com'};
-
-$('.log-in').click((e) => {
-    e.preventDefault();
-        $.post(usersURL, userDatos, (respuesta, estado) => {
-            if(estado === "success") {
-                // respuesta.forEach(e => {
-                // //     $('body').prepend(`<div>
-                // //     Guardado:${e.name};
-                // // </div>`)
-            
-                // })
-                console.log(respuesta);
-            }
-        })
-        // console.log('funciona');
-        // console.log(usersURL)
-        $.get(usersURL, (respuesta, estado) => {
-            respuesta.forEach(e => {
-                console.log(e.name);
-            })
-        })
-    })
