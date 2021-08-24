@@ -67,6 +67,14 @@ body {
         position: relative;
     }
 
+    .trolley-products table {
+        width: 100%;
+        box-sizing: border-box;
+        border-collapse: collapse;
+        border-spacing: 0;
+        display: table;
+        text-indent: initial;
+    }
     
     .trolley-products__submenu .trolley-products,
     .user-register__submenu .user-register {
@@ -85,7 +93,9 @@ body {
         position: absolute;
         top: 100px;
         right: 0;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         border: 1px solid $main;
         border-top: 0;
         padding: 0;
@@ -134,8 +144,13 @@ body {
 
         &__product,
         &__price,
-        &__amount {
+        &__amount,
+        &__button {
             margin: 15px 5px;
+        }
+
+        &__button {
+            padding: 15px;
         }
     }
 
@@ -150,20 +165,25 @@ body {
         color: seagreen;
     }
 
-    .delete-all {
+    .delete-all,
+    .calculate-total {
         height: 30px;
         width: 120px;
         background-color: rgb(184, 23, 23);
         border: 0;
         color: $details;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .delete-all {
+        background-color: rgb(184, 23, 23);
     }
 
     .calculate-total {
-        height: 30px;
-        width: 120px;
         background-color: $main;
-        border: 0;
-        color: $details;
     }
 
     .main {
@@ -230,38 +250,56 @@ body {
         }
     }
 
+    .product-button {
+        text-decoration: none;
+        padding: 5px;
+        background-color: rgb(184, 23, 23);
+        color: $details;
+        display: flex;
+    }
+
+    tr {
+        display: flex;
+        // justify-content: space-evenly;
+        align-items: center;
+    }
+    td {
+        width: 1fr;
+    }
+
     .potatoe {
-        background: url(../material/pexels-michael-burrows-7129145.jpg);
+        background: url(../material/potatoes.jpg);
         background-size: cover;
         background-repeat: no-repeat;
-        background-position-y: center;       
+        background-position-y: center;
     }
+    
     .onion {
-        background: url(../material/pexels-michael-burrows-7129153.jpg);
+        background: url(../material/onions.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         background-position-y: center;    
     }
     .sweet-potatoe {
-        background: url(../material/pexels-michael-burrows-7129156.jpg);
+        background: url(../material/sweet-potatoes.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         background-position-y: center;
     }
     .tomatoe {
-        background: url(../material/pexels-michael-burrows-7129184.jpg);
+        background: url(../material/tomatoes.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         background-position-y: center;
     }
     .carrot {
-        background: url(../material/pexels-suzy-hazelwood-1306559.jpg);
+        background: url(../material/carrots.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         background-position-y: center;
     }
     .apple {
-        background: url(../material/pexels-magova-1131079.jpg);
+        background: url(../material/apples.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         background-position-y: center;
@@ -322,6 +360,18 @@ body {
     }
     .corn {
         background: url(../material/corn.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .spinach {
+        background: url(../material/spinach.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+    }
+    .garlic {
+        background: url(../material/garlic.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         background-position-y: center;
@@ -398,6 +448,87 @@ body {
         border-color: seagreen;
     }
 
+    .recipes {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+
+        &-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .recipe {
+        min-height: 175px;
+        width: 300px;
+        background-color: $details;
+        margin: 10px 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 17px;
+        box-shadow: 3px 3px 6px black;
+        transition-property: box-shadow;
+        transition-duration: .5s;
+
+        &:hover {
+            box-shadow: 6px 6px 6px $main;
+        }
+
+        &-img {
+            width: 150px;
+            height: 150px;
+            margin-left: 10px;
+            background-color: green;
+        }
+
+        &-information {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 175px;
+        }
+
+        & a {
+            text-decoration: none;
+            color: $main;
+            font-size: 15px;
+        }
+    }
+
+    .ingredients {
+        display: none;
+        & p {
+            margin: 5px 0;
+        }
+
+        &-item {
+            list-style: none;
+            font-size: 15px;
+        }
+    }
+
+    .spinach-img {
+        background: url(../material/spinach-fritters.jpg) 70%;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .broccoli-img {
+        background: url(../material/broccoli-pasta.jpg) 70%;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .pumpkin-img {
+        background: url(../material/pumpkin-ravioli.jpg) 70%;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
     .footer {
         height: 100px;
         background-color: $main;
@@ -451,10 +582,6 @@ body {
         }
 
         &-trolley {
-            &__products {
-                background-color: $dark-main;
-                border: 1px solid $dark-secondary;
-            }
             
             &__data {
                 color: $details;
@@ -464,5 +591,20 @@ body {
         &-product {
             color: $details;
         }
+
+        &-recipe {
+            background-color: $dark-main;
+        }
+    }
+
+    .trolley-products__submenu:hover .dark-trolley__products {
+        background-color: $dark-main;
+        border: 1px solid $dark-secondary;
+    }
+
+    .user-register__submenu:hover .dark-user__register {
+        background-color: $dark-main;
+        border: 1px solid $dark-secondary;
+        color: $details;
     }
 }

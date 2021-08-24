@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
-    <link rel="stylesheet" href="./estilos/main.css">
+    <link lang="sass" rel="stylesheet" href="./estilos/main.css">
     <title>Carrito de compras</title>
 </head>
 
@@ -85,7 +85,7 @@
                             <label for="email" class="user-email__label">Email</label>
                             <input type="email" class="user-email__input" name="email" placeholder="Enter your email">
                         </div>
-                        <button class="user-register__button log-in" disabled>Log In</button>
+                        <a href="#" class="user-register__anchor"><button class="user-register__button log-in" disabled>Log In</button></a>
                     </form>
                 </li>
                 <li class="trolley-products__submenu">
@@ -99,7 +99,7 @@
                                     <th class="trolley-data__product">Producto</th>
                                     <th class="trolley-data__amount">Cantidad</th>
                                     <th class="trolley-data__price">Precio</th>
-                                    <th></th>
+                                    <th class="trolley-data__button"></th>
                                 </tr>
                             </thead>
                             <tbody class="trolley-products__list"></tbody>
@@ -281,8 +281,85 @@
                 </div>
                 <a href="#" class="card-button add-button" id="add-button" data-id="15">Add</a>
             </div>
+
+            <!-- SPINACH -->
+            <div class="card">
+                <div class="card-pic spinach"></div>
+                <div class="card-info">
+                    <p>Spinach</p>
+                    <p>Price: $<span>120</span></p>
+                </div>
+                <a href="#" class="card-button add-button" id="add-button" data-id="15">Add</a>
+            </div>
+
+            <!-- GARLIC -->
+            <div class="card">
+                <div class="card-pic garlic"></div>
+                <div class="card-info">
+                    <p>Spinach</p>
+                    <p>Price: $<span>70</span></p>
+                </div>
+                <a href="#" class="card-button add-button" id="add-button" data-id="15">Add</a>
+            </div>
         </div>
         <div class="message"></div>
+
+        <!-- RECIPES -->
+        <div class="recipes-container">
+            <h2 class="recipes-container__title">We recommend the following recipes</h2>
+            <div class="recipes">
+                <!-- SPINACH FRITTERS -->
+                <div class="recipe">
+                    <div class="recipe-img spinach-img"></div>
+                    <div class="recipe-information">
+                        <p class="recipe-information__title">Spinach Fritters</p>
+                        <a href="#" class="recipe-information__button spinach-button">Ver más +</a>
+                        <div class="ingredients spinach-ingredients">
+                            <p class="ingredients-title">Ingredients</p>
+                            <ul>
+                                <li class="ingredients-item">Spinach</li>
+                                <li class="ingredients-item">Onion</li>
+                                <li class="ingredients-item">Garlic</li>
+                                <li class="ingredients-item">Red Pepper</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- BROCCOLI PASTA -->
+                <div class="recipe">
+                    <div class="recipe-img broccoli-img"></div>
+                    <div class="recipe-information">
+                        <p class="recipe-information__title">Broccoli Pasta</p>
+                        <a href="#" class="recipe-information__button broccoli-button">Ver más +</a>
+                        <div class="ingredients broccoli-ingredients">
+                            <p class="ingredients-title">Ingredients</p>
+                            <ul>
+                                <li class="ingredients-item">Broccoli</li>
+                                <li class="ingredients-item">Pasta</li>
+                                <li class="ingredients-item">Cheese</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- PUMPKIN RAVIOLI -->
+                <div class="recipe">
+                    <div class="recipe-img pumpkin-img"></div>
+                    <div class="recipe-information">
+                        <p class="recipe-information__title">Pumpkin Ravioli</p>
+                        <a href="#" class="recipe-information__button pumpkin-button">Ver más +</a>
+                        <div class="ingredients pumpkin-ingredients">
+                            <p class="ingredients-title">Ingredients</p>
+                            <ul>
+                                <li class="ingredients-item">Pumpkin</li>
+                                <li class="ingredients-item">Cheese</li>
+                                <li class="ingredients-item">Egg</li>
+                                <li class="ingredients-item">Butter</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- FOOTER -->

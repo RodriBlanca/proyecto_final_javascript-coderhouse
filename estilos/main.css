@@ -64,6 +64,15 @@ body {
             align-items: center;
     position: relative;
   }
+  .trolley-products table {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+    text-indent: initial;
+  }
   .trolley-products__submenu .trolley-products,
   .user-register__submenu .user-register {
     display: none;
@@ -79,7 +88,16 @@ body {
     position: absolute;
     top: 100px;
     right: 0;
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     border: 1px solid seagreen;
     border-top: 0;
     padding: 0;
@@ -142,8 +160,11 @@ body {
             align-items: center;
     color: black;
   }
-  .trolley-data__product, .trolley-data__price, .trolley-data__amount {
+  .trolley-data__product, .trolley-data__price, .trolley-data__amount, .trolley-data__button {
     margin: 15px 5px;
+  }
+  .trolley-data__button {
+    padding: 15px;
   }
   .trolley-buttons {
     margin-bottom: 5px;
@@ -154,19 +175,29 @@ body {
     border: 1px solid seagreen;
     color: seagreen;
   }
-  .delete-all {
+  .delete-all,
+  .calculate-total {
     height: 30px;
     width: 120px;
     background-color: #b81717;
     border: 0;
     color: white;
+    text-decoration: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .delete-all {
+    background-color: #b81717;
   }
   .calculate-total {
-    height: 30px;
-    width: 120px;
     background-color: seagreen;
-    border: 0;
-    color: white;
   }
   .main {
     display: -webkit-box;
@@ -259,38 +290,58 @@ body {
     max-height: 100%;
     max-width: 100%;
   }
+  .product-button {
+    text-decoration: none;
+    padding: 5px;
+    background-color: #b81717;
+    color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  tr {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  td {
+    width: 1fr;
+  }
   .potatoe {
-    background: url(../material/pexels-michael-burrows-7129145.jpg);
+    background: url(../material/potatoes.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: center;
   }
   .onion {
-    background: url(../material/pexels-michael-burrows-7129153.jpg);
+    background: url(../material/onions.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: center;
   }
   .sweet-potatoe {
-    background: url(../material/pexels-michael-burrows-7129156.jpg);
+    background: url(../material/sweet-potatoes.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: center;
   }
   .tomatoe {
-    background: url(../material/pexels-michael-burrows-7129184.jpg);
+    background: url(../material/tomatoes.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: center;
   }
   .carrot {
-    background: url(../material/pexels-suzy-hazelwood-1306559.jpg);
+    background: url(../material/carrots.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: center;
   }
   .apple {
-    background: url(../material/pexels-magova-1131079.jpg);
+    background: url(../material/apples.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: center;
@@ -351,6 +402,18 @@ body {
   }
   .corn {
     background: url(../material/corn.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+  .spinach {
+    background: url(../material/spinach.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+  .garlic {
+    background: url(../material/garlic.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: center;
@@ -441,6 +504,106 @@ body {
   .validate {
     border-color: seagreen;
   }
+  .recipes {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  .recipes-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .recipe {
+    min-height: 175px;
+    width: 300px;
+    background-color: white;
+    margin: 10px 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 17px;
+    -webkit-box-shadow: 3px 3px 6px black;
+            box-shadow: 3px 3px 6px black;
+    -webkit-transition-property: -webkit-box-shadow;
+    transition-property: -webkit-box-shadow;
+    transition-property: box-shadow;
+    transition-property: box-shadow, -webkit-box-shadow;
+    -webkit-transition-duration: .5s;
+            transition-duration: .5s;
+  }
+  .recipe:hover {
+    -webkit-box-shadow: 6px 6px 6px seagreen;
+            box-shadow: 6px 6px 6px seagreen;
+  }
+  .recipe-img {
+    width: 150px;
+    height: 150px;
+    margin-left: 10px;
+    background-color: green;
+  }
+  .recipe-information {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    min-height: 175px;
+  }
+  .recipe a {
+    text-decoration: none;
+    color: seagreen;
+    font-size: 15px;
+  }
+  .ingredients {
+    display: none;
+  }
+  .ingredients p {
+    margin: 5px 0;
+  }
+  .ingredients-item {
+    list-style: none;
+    font-size: 15px;
+  }
+  .spinach-img {
+    background: url(../material/spinach-fritters.jpg) 70%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .broccoli-img {
+    background: url(../material/broccoli-pasta.jpg) 70%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .pumpkin-img {
+    background: url(../material/pumpkin-ravioli.jpg) 70%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
   .footer {
     height: 100px;
     background-color: seagreen;
@@ -495,14 +658,22 @@ body {
     border: 1px solid black;
     color: white;
   }
-  .dark-trolley__products {
-    background-color: #202020;
-    border: 1px solid black;
-  }
   .dark-trolley__data {
     color: white;
   }
   .dark-product {
+    color: white;
+  }
+  .dark-recipe {
+    background-color: #202020;
+  }
+  .trolley-products__submenu:hover .dark-trolley__products {
+    background-color: #202020;
+    border: 1px solid black;
+  }
+  .user-register__submenu:hover .dark-user__register {
+    background-color: #202020;
+    border: 1px solid black;
     color: white;
   }
 }

@@ -1,7 +1,6 @@
 /* CLASES */
 class Product {
-    constructor(img, name, price, id) {
-        this.img = img;
+    constructor(name, price, id) {
         this.name = name;
         this.price = price;
         this.id = id;
@@ -53,10 +52,25 @@ function loadEvents() {
 
     for(let i = 0; i < cards.length; i++) {
         cards[i].addEventListener('click', (e) => {
+            e.preventDefault();
             if(e.target.classList.contains('add-button')) {
                 clearTrolley();
-                const newProduct = createProduct(i);   
-                addProductTrolley(newProduct);         
+                const newProduct = createProduct(i);
+                
+                const exist = productsList.some(product => product.id === newProduct.id);
+                if(exist) {
+                    const products = productsList.map(product => {
+                        if(product.id === newProduct.id) {
+                            product.amount++;
+                            return product;
+                        } else {
+                            return product;
+                        }
+                    })
+                    productsList = [...products];
+                } else {
+                    addProductTrolley(newProduct);         
+                }
                 addToHTMLTrolley();
             }
         })
@@ -103,18 +117,16 @@ function loadEvents() {
             message.classList.remove('user-message');
         }
     });
-
 }
 
 /* FUNCTIONS */
 
 /* CREA UN NUEVO PRODUCTO CON LOS VALORES DE LAS CARDS */
 function createProduct(i) {
-    const img = cards[i].children[0];
     const name = cards[i].children[1].children[0].textContent;
     const price = cards[i].children[1].children[1].children[0].textContent;
     const id = cards[i].querySelector('a').getAttribute('data-id');
-    return new Product(img, name, price, id);
+    return new Product(name, price, id);
 }
 
 /* AGREGA UN PRODUCTO AL ARRAY "productList" */
@@ -128,13 +140,13 @@ function addToHTMLTrolley() {
     productsList.forEach(product => {
         if(body.classList.contains('dark-body')) {
             const tr = document.createElement('tr');
-            li.classList.add('product');
+            tr.classList.add('product');
             const trName = document.createElement('td');
             const trPrice = document.createElement('td');
             const trAmount = document.createElement('td');
             const trButton = document.createElement('td');
             trButton.innerHTML = `
-                <a href="#" class="product-button">X</a>
+                <a href="#" class="product-button" data-id="${product.id}">X</a>
             `;
             trName.textContent = `${product.name}`;
             trAmount.textContent = `${product.amount}`;
@@ -176,15 +188,18 @@ function clearTrolley() {
 /* CALCULA EL TOTAL DE LA COMPRA */
 function calculateTotal() {
     totalList = [];
-    console.log(productsList);
+    sum = 0;
+    // Evalúa si un producto tiene mayor cantidad a uno
     productsList.forEach(product => {
-        totalList = [...totalList, parseInt(product.price)];
-        sum = 0;
-        totalList.forEach(precios => {
-            sum += precios;
-            return sum;
-        })
+        if(product.amount > 1) {
+            totalList = [...totalList, parseInt(product.price * product.amount)];
+            return totalList;
+        } else {
+            totalList = [...totalList, parseInt(product.price)];
+            return totalList;
+        }
     })
+    totalList.forEach(numbers => sum += numbers);
     sumToHTML(sum);
     setTimeout(function() {
         productsList = [];
@@ -225,7 +240,6 @@ function register(e) {
             setTimeout(function(){
                 // Elimina el mensaje después de 3 segundos
                 $('.successful-registration').remove();
-                console.log('funciona');
             }, 3000)
         }
     })
@@ -323,7 +337,7 @@ function errorMessage(message) {
     const errores = document.querySelectorAll('.errorInput');
     
     if(errores.length === 1) {
-        userRegister.insertBefore(errorAlert, logInBtn);
+        userRegister.appendChild(errorAlert);
     }
 }
 
@@ -382,7 +396,7 @@ $( document ).ready(function(){
         $('.trolley-products').addClass('dark-trolley__products');
         $('.trolley-data').addClass('dark-trolley__data');
         $('.user-register').addClass('dark-user__register');
-        /* UTILIZACIÓN DE EFECTOS CON JQUERY */
+        $('.recipe').addClass('dark-recipe');
         $('.dark-mode').css('background-color', 'seagreen');
         $('.dark-mode').text('Light Mode');
     
@@ -399,7 +413,7 @@ $( document ).ready(function(){
         $('.trolley-data').removeClass('dark-trolley__data');
         $('.user-register').removeClass('dark-user__register');
         $('.product').removeClass('dark-product');
-        /* UTILIZACIÓN DE EFECTOS CON JQUERY */
+        $('.recipe').removeClass('dark-recipe');
         $('.dark-mode').css('background-color', 'rgb(32, 32, 32)');
         $('.dark-mode').text('Dark Mode');
 
@@ -407,5 +421,60 @@ $( document ).ready(function(){
     }
 
     $('.dark-mode').click(theme);
+    // Efecto para las recetas
+    $('.broccoli-button').click(function(e) {
+        e.preventDefault();
+        $('.broccoli-ingredients').slideDown(2000);
+        $('.broccoli-button').text('Ver menos -');
+    })
+    $('.pumpkin-button').click(function(e) {
+        e.preventDefault();
+        $('.pumpkin-ingredients').slideDown(2000);
+        $('.pumpkin-button').text('Ver menos -');
+    })
+
+    // Esconder ingredientes
+    function spinachEffect(e) {
+        e.preventDefault();
+        if($('.spinach-button').hasClass('verMenos')) {
+            $('.spinach-ingredients').slideUp(2000);
+            $('.spinach-button').removeClass('verMenos');
+            $('.spinach-button').text('Ver mas +');
+        } else {
+            $('.spinach-ingredients').slideDown(2000);
+            $('.spinach-button').text('Ver menos -');
+            $('.spinach-button').addClass('verMenos');
+        }
+    }
+
+    function broccoliEffect(e) {
+        e.preventDefault();
+        if($('.broccoli-button').hasClass('verMenos')) {
+            $('.broccoli-ingredients').slideUp(2000);
+            $('.broccoli-button').removeClass('verMenos');
+            $('.broccoli-button').text('Ver mas +');
+        } else {
+            $('.broccoli-ingredients').slideDown(2000);
+            $('.broccoli-button').text('Ver menos -');
+            $('.broccoli-button').addClass('verMenos');
+        }
+    }
+
+    function pumpkinEffect(e) {
+        e.preventDefault();
+        if($('.pumpkin-button').hasClass('verMenos')) {
+            $('.pumpkin-ingredients').slideUp(2000);
+            $('.pumpkin-button').removeClass('verMenos');
+            $('.pumpkin-button').text('Ver mas +');
+        } else {
+            $('.pumpkin-ingredients').slideDown(2000);
+            $('.pumpkin-button').text('Ver menos -');
+            $('.pumpkin-button').addClass('verMenos');
+        }
+    }
+
+    $('.spinach-button').click(spinachEffect);
+    $('.broccoli-button').click(broccoliEffect);
+    $('.pumpkin-button').click(pumpkinEffect);
 })
 
